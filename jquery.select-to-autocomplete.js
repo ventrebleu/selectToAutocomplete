@@ -49,7 +49,9 @@ THE SOFTWARE.
       context.$text_field.val( context.$select_field.find( selected_finder ).text() );
     },
     handle_select_field: function( $select_field ) {
-      return $select_field.hide();
+      //this is a modification of the original plugin so autocomplete works with infiel_label plugin
+      //return $select_field.hide();
+      return $select_field.remove();
     },
     insert_text_field: function( context ) {
       var $text_field = $( '<input type="text"></input>' );
@@ -59,7 +61,9 @@ THE SOFTWARE.
         for (var i=0; i < raw_attrs.length; i++) {
           var key = raw_attrs[i].nodeName;
           var value = raw_attrs[i].nodeValue;
-          if ( key !== 'name' && key !== 'id' && typeof context.$select_field.attr(key) !== 'undefined' ) {
+          //same here
+          //if ( key !== 'name' && key !== 'id' && typeof context.$select_field.attr(key) !== 'undefined' ) {
+          if ( key !== 'name' && typeof context.$select_field.attr(key) !== 'undefined' ) {
             attrs[key] = value;
           }
         };
